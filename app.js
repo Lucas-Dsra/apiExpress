@@ -6,7 +6,7 @@ const rotas = require("./rotas/livroRota.js")
 
 app.use('/livros',rotas)
 
-const port = 8001;
+const port = 8000;
 
 app.get('/', (req, res) =>{
     res.send("Get Funcionando");
