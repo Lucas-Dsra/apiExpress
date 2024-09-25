@@ -11,7 +11,7 @@ function getLivroID(id){
 function postNovoLivro(livroNovo){
     const livros = JSON.parse(fs.readFileSync("./livros.json"))
     const addLivroList = [...livros, livroNovo]
-    fs.writeFileSync("livros.json", JSON.stringify(addLivroList))
+    fs.writeFileSync("./livros.json", JSON.stringify(addLivroList))
 }
 
 function modificaLivros(modificacoes, id){
