@@ -14,4 +14,4 @@ app.get('/', (req, res) =>{
 
 app.listen(port, () => {
     console.log("escutando porta 8000");
-}
+})
