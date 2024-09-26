@@ -35,7 +35,7 @@ module.exports = {
     getMostrarLivros,
     getLivroID,
     postNovoLivro,
-    modificaLivros,
+    modificaLivros, 
     retirarLivro,
 }
 

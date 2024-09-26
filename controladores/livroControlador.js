@@ -16,8 +16,14 @@ function pushLivros(req, res){
 function getSendLivroID(req, res){
     try {
         const id = req.params.id
-        const livroFilterId = getLivroID(id)
-        res.send(livroFilterId)
+        if(id && Number(id)){
+            const livroFilterId = getLivroID(id)
+            res.send(livroFilterId)
+        } else{
+            res.status(422)
+            res.send("id invalido")
+        }
+       
     } catch (error) {
         res.status(500)
         res.send(erro.message)
@@ -27,9 +33,16 @@ function getSendLivroID(req, res){
 function postLivro(req,res){
     try {
         const livroNovo = req.body
-        postNovoLivro(livroNovo)
+
+        if(req.body.nome){
+            postNovoLivro(livroNovo)
         res.status(201)
         res.send("livro enviado com sucesso")
+        } else{
+            res.status(422)
+            res.send("Campo nome obrigatório")
+        }
+        
     } catch (error) {
         res.status(500)
         res.send(erro.message)
@@ -39,9 +52,15 @@ function postLivro(req,res){
 function patchLivro(req, res){
     try {
         const id = req.params.id
-        const body = req.body
-        modificaLivros(body, id)
-        res.send("Item modificado com sucesso")
+        if(id && Number(id)){
+            const body = req.body
+            modificaLivros(body, id)
+            res.send("Item modificado com sucesso")
+        } else{
+            res.status(422)
+            res.send("id invalido")
+        }
+       
     } catch (error) {
         res.status(500)
         res.send(erro.message)
@@ -50,9 +69,17 @@ function patchLivro(req, res){
 function deleteLivro(req, res){
     try {
         const id = req.params.id
-        retirarLivro(id)
-        res.send("livro Retirado")
+
+        if(id && Number(id)){
+            retirarLivro(id)
+            res.send("livro Retirado")
+            
+        }else{
+            res.status(422)
+            res.send("id invalido")
+        }
         
+       
     } catch (error) {
         res.status(500)
         res.send(erro.message)
